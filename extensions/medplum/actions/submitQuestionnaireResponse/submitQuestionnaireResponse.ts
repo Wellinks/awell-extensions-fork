@@ -44,16 +44,22 @@ export const submitQuestionnaireResponse: Action<
         pathwayId: pathway.id,
         activityId: activity.id,
       })
-
+      helpers.log(formRes, 'Form response')
       formDefinition = formRes.formDefinition
       formResponse = formRes.formResponse
     } catch (error) {
+      helpers.log({ error }, 'Error')
       const err = error as Error
       await onError({
         events: [addActivityEventLog({ message: err.message })],
       })
       return
     }
+
+    helpers.log(
+      { formDefinition, formResponse },
+      'Form definition and response',
+    )
 
     const FhirQuestionnaire =
       awellSdk.utils.fhir.AwellFormToFhirQuestionnaire(formDefinition)
@@ -63,10 +69,17 @@ export const submitQuestionnaireResponse: Action<
         awellFormResponse: formResponse,
       })
 
+    helpers.log(
+      { FhirQuestionnaire, FhirQuestionnaireResponse },
+      'Fhir questionnaire and response',
+    )
+
     const QuestionnaireResource = await medplumSdk.createResourceIfNoneExist(
       FhirQuestionnaire,
       `identifier=${formDefinition.definition_id}/published/${formDefinition.id}`,
     )
+
+    helpers.log({ QuestionnaireResource }, 'Questionnaire resource')
 
     const res = await medplumSdk.createResource({
       resourceType: 'QuestionnaireResponse',
@@ -79,6 +92,8 @@ export const submitQuestionnaireResponse: Action<
       },
       item: FhirQuestionnaireResponse,
     })
+
+    helpers.log({ res }, 'Questionnaire response')
 
     await onComplete({
       data_points: {
