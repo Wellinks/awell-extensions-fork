@@ -292,7 +292,6 @@ __metadata:
     "@types/react": "npm:^19.1.12"
     "@types/sanitize-html": "npm:^2.13.0"
     "@types/showdown": "npm:^2.0.0"
-    "@types/uuid": "npm:^10.0.0"
     "@types/xml2js": "npm:^0.4.12"
     "@types/yargs": "npm:^17.0.32"
     "@typescript-eslint/eslint-plugin": "npm:^5.52.0"
@@ -351,7 +350,6 @@ __metadata:
     twilio: "npm:^5.8.0"
     typescript: "npm:5.7.2"
     tzdata: "npm:^1.0.43"
-    uuid: "npm:^10.0.0"
     xml2js: "npm:^0.6.2"
     yargs: "npm:^17.7.2"
     zod: "npm:^3.25.32"
@@ -3472,13 +3470,6 @@ __metadata:
   version: 1.0.3
   resolution: "@types/treeify@npm:1.0.3"
   checksum: 10/777e579b30a916a781e7cbad2b7a76bc5473ff7bfe7167dd6de47f80f4386df5bf3d0dc34170afb75d52e75f6ed61cc109abf2324e093c1f9ecd4e79fec58d0c
-  languageName: node
-  linkType: hard
-
-"@types/uuid@npm:^10.0.0":
-  version: 10.0.0
-  resolution: "@types/uuid@npm:10.0.0"
-  checksum: 10/e3958f8b0fe551c86c14431f5940c3470127293280830684154b91dc7eb3514aeb79fe3216968833cf79d4d1c67f580f054b5be2cd562bebf4f728913e73e944
   languageName: node
   linkType: hard
 
